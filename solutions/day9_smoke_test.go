@@ -8,11 +8,11 @@ import (
 )
 
 var smokeTestInput = [][]int{
-	{2,1,9,9,9,4,3,2,1,0},
-	{3,9,8,7,8,9,4,9,2,1},
-	{9,8,5,6,7,8,9,8,9,2},
-	{8,7,6,7,8,9,6,7,8,9},
-	{9,8,9,9,9,6,5,6,7,8},
+	{2, 1, 9, 9, 9, 4, 3, 2, 1, 0},
+	{3, 9, 8, 7, 8, 9, 4, 9, 2, 1},
+	{9, 8, 5, 6, 7, 8, 9, 8, 9, 2},
+	{8, 7, 6, 7, 8, 9, 6, 7, 8, 9},
+	{9, 8, 9, 9, 9, 6, 5, 6, 7, 8},
 }
 
 func TestLowestSmokePoints(t *testing.T) {
@@ -25,12 +25,10 @@ func TestLowestSmokePoints(t *testing.T) {
 		heights = append(heights, smokeTestInput[point.X][point.Y])
 	}
 
-
 	sort.Ints(heights)
 
-	is.Equal(heights, []int{0,1,5,5})
+	is.Equal(heights, []int{0, 1, 5, 5})
 }
-
 
 func TestCalculateSmokeBasin(t *testing.T) {
 	is := is_.New(t)
@@ -45,7 +43,7 @@ func TestCalculateSmokeBasin(t *testing.T) {
 
 	sort.Ints(sizes)
 
-	subSlice := sizes[len(sizes) - 3:]
+	subSlice := sizes[len(sizes)-3:]
 
 	result := helpers.MulIntSlice(subSlice)
 

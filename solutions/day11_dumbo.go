@@ -5,19 +5,18 @@ import (
 	"github.com/encero/advent-of-code-2021/helpers"
 )
 
-
 func Day11DumboOcto() error {
 	var input = [][]DumboOctopus{
-		{{PowerLevel:6},{PowerLevel:6},{PowerLevel:1},{PowerLevel:7},{PowerLevel:1},{PowerLevel:1},{PowerLevel:3},{PowerLevel:5},{PowerLevel:8},{PowerLevel:4}},
-		{{PowerLevel:6},{PowerLevel:5},{PowerLevel:4},{PowerLevel:4},{PowerLevel:2},{PowerLevel:1},{PowerLevel:8},{PowerLevel:6},{PowerLevel:3},{PowerLevel:8}},
-		{{PowerLevel:5},{PowerLevel:4},{PowerLevel:5},{PowerLevel:7},{PowerLevel:3},{PowerLevel:3},{PowerLevel:1},{PowerLevel:4},{PowerLevel:8},{PowerLevel:8}},
-		{{PowerLevel:1},{PowerLevel:1},{PowerLevel:3},{PowerLevel:5},{PowerLevel:6},{PowerLevel:7},{PowerLevel:5},{PowerLevel:5},{PowerLevel:8},{PowerLevel:7}},
-		{{PowerLevel:1},{PowerLevel:2},{PowerLevel:2},{PowerLevel:1},{PowerLevel:3},{PowerLevel:5},{PowerLevel:3},{PowerLevel:2},{PowerLevel:1},{PowerLevel:6}},
-		{{PowerLevel:1},{PowerLevel:8},{PowerLevel:1},{PowerLevel:1},{PowerLevel:1},{PowerLevel:2},{PowerLevel:4},{PowerLevel:3},{PowerLevel:7},{PowerLevel:8}},
-		{{PowerLevel:1},{PowerLevel:3},{PowerLevel:8},{PowerLevel:7},{PowerLevel:8},{PowerLevel:6},{PowerLevel:4},{PowerLevel:3},{PowerLevel:6},{PowerLevel:8}},
-		{{PowerLevel:4},{PowerLevel:4},{PowerLevel:2},{PowerLevel:7},{PowerLevel:6},{PowerLevel:3},{PowerLevel:7},{PowerLevel:2},{PowerLevel:6},{PowerLevel:2}},
-		{{PowerLevel:6},{PowerLevel:7},{PowerLevel:7},{PowerLevel:8},{PowerLevel:6},{PowerLevel:4},{PowerLevel:5},{PowerLevel:4},{PowerLevel:8},{PowerLevel:6}},
-		{{PowerLevel:3},{PowerLevel:6},{PowerLevel:8},{PowerLevel:2},{PowerLevel:1},{PowerLevel:4},{PowerLevel:6},{PowerLevel:7},{PowerLevel:4},{PowerLevel:5}},
+		{{PowerLevel: 6}, {PowerLevel: 6}, {PowerLevel: 1}, {PowerLevel: 7}, {PowerLevel: 1}, {PowerLevel: 1}, {PowerLevel: 3}, {PowerLevel: 5}, {PowerLevel: 8}, {PowerLevel: 4}},
+		{{PowerLevel: 6}, {PowerLevel: 5}, {PowerLevel: 4}, {PowerLevel: 4}, {PowerLevel: 2}, {PowerLevel: 1}, {PowerLevel: 8}, {PowerLevel: 6}, {PowerLevel: 3}, {PowerLevel: 8}},
+		{{PowerLevel: 5}, {PowerLevel: 4}, {PowerLevel: 5}, {PowerLevel: 7}, {PowerLevel: 3}, {PowerLevel: 3}, {PowerLevel: 1}, {PowerLevel: 4}, {PowerLevel: 8}, {PowerLevel: 8}},
+		{{PowerLevel: 1}, {PowerLevel: 1}, {PowerLevel: 3}, {PowerLevel: 5}, {PowerLevel: 6}, {PowerLevel: 7}, {PowerLevel: 5}, {PowerLevel: 5}, {PowerLevel: 8}, {PowerLevel: 7}},
+		{{PowerLevel: 1}, {PowerLevel: 2}, {PowerLevel: 2}, {PowerLevel: 1}, {PowerLevel: 3}, {PowerLevel: 5}, {PowerLevel: 3}, {PowerLevel: 2}, {PowerLevel: 1}, {PowerLevel: 6}},
+		{{PowerLevel: 1}, {PowerLevel: 8}, {PowerLevel: 1}, {PowerLevel: 1}, {PowerLevel: 1}, {PowerLevel: 2}, {PowerLevel: 4}, {PowerLevel: 3}, {PowerLevel: 7}, {PowerLevel: 8}},
+		{{PowerLevel: 1}, {PowerLevel: 3}, {PowerLevel: 8}, {PowerLevel: 7}, {PowerLevel: 8}, {PowerLevel: 6}, {PowerLevel: 4}, {PowerLevel: 3}, {PowerLevel: 6}, {PowerLevel: 8}},
+		{{PowerLevel: 4}, {PowerLevel: 4}, {PowerLevel: 2}, {PowerLevel: 7}, {PowerLevel: 6}, {PowerLevel: 3}, {PowerLevel: 7}, {PowerLevel: 2}, {PowerLevel: 6}, {PowerLevel: 2}},
+		{{PowerLevel: 6}, {PowerLevel: 7}, {PowerLevel: 7}, {PowerLevel: 8}, {PowerLevel: 6}, {PowerLevel: 4}, {PowerLevel: 5}, {PowerLevel: 4}, {PowerLevel: 8}, {PowerLevel: 6}},
+		{{PowerLevel: 3}, {PowerLevel: 6}, {PowerLevel: 8}, {PowerLevel: 2}, {PowerLevel: 1}, {PowerLevel: 4}, {PowerLevel: 6}, {PowerLevel: 7}, {PowerLevel: 4}, {PowerLevel: 5}},
 	}
 
 	simulator := NewDumboSimulator(input)
@@ -40,17 +39,16 @@ func Day11DumboOcto() error {
 	return nil
 }
 
-
 type DumboOctopus struct {
 	PowerLevel      int
 	RecentlyFlashed bool
 }
 
 type DumboSimulator struct {
-	grid       [][]DumboOctopus
-	flashCount int
+	grid            [][]DumboOctopus
+	flashCount      int
 	simulationSteps int
-	lastFlashCount int
+	lastFlashCount  int
 }
 
 func NewDumboSimulator(grid [][]DumboOctopus) *DumboSimulator {

@@ -35,12 +35,12 @@ func Day14Polymers() error {
 
 func PolymerMinMax(polymer map[string]int64) int64 {
 
-    elements := make(map[string]int64)
+	elements := make(map[string]int64)
 
-    for p, count := range polymer {
-        elements[string(p[0])] += count/2
-        elements[string(p[1])] += count/2
-    }
+	for p, count := range polymer {
+		elements[string(p[0])] += count / 2
+		elements[string(p[1])] += count / 2
+	}
 
 	min := int64(9223372036854775807)
 	max := int64(0)

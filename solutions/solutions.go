@@ -2,7 +2,6 @@ package solutions
 
 var Solutions = map[int]func() error{}
 
-
 func init() {
 	Solutions[1] = Day1
 	Solutions[2] = Day2
@@ -21,4 +20,6 @@ func init() {
 	Solutions[15] = Day15Chitons
 	Solutions[16] = Day16PacketDecoder
 	Solutions[17] = Day17ProbeLauncher
+	Solutions[18] = Day18SnailNumbers
+	Solutions[19] = Day19Beacons
 }

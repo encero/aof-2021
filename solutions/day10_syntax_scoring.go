@@ -7,7 +7,6 @@ import (
 	"strings"
 )
 
-
 func Day10SyntaxScoring() error {
 	var input []string
 	helpers.ReadLines("inputs/day10.txt", func(s string) error {

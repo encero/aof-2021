@@ -9,9 +9,8 @@ func TestSonarDepth(t *testing.T) {
 	}
 }
 
-
 func TestSlidingSonarDepth(t *testing.T) {
-	got := SlidingNumberOfIncreasesInIntSlice([]int{607,618,618,617,647,716,769,792})
+	got := SlidingNumberOfIncreasesInIntSlice([]int{607, 618, 618, 617, 647, 716, 769, 792})
 	want := 5
 
 	if got != want {

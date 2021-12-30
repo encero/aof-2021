@@ -1,11 +1,9 @@
 package solutions
 
-
 import (
 	is_ "github.com/matryer/is"
 	"testing"
 )
-
 
 func TestAverageBitValues(t *testing.T) {
 	is := is_.New(t)
@@ -27,7 +25,7 @@ func TestAverageBitValues(t *testing.T) {
 
 	gamma, epsilon := AverageBitValues(input, 0b11111)
 
-	is.Equal(gamma, 0b10110) // gamma
+	is.Equal(gamma, 0b10110)   // gamma
 	is.Equal(epsilon, 0b01001) // epsilon
 }
 
@@ -54,7 +52,6 @@ func TestDiagnosticsBitsFilter(t *testing.T) {
 		return gamma
 	})
 	is.Equal(oxy, 0b10111) // oxy
-
 
 	co2 := DiagnosticsBitsFilter(input, func(ints []int) int {
 		_, epsilon := AverageBitValues(ints, 0b11111)

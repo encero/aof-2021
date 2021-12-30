@@ -63,7 +63,7 @@ func TestPlotVents(t *testing.T) {
 	is.Equal(overlap, 5) // test overlap without diagonals
 
 	plot = PlotVents(vents)
-//	PrintVentPlot(plot)
+	//	PrintVentPlot(plot)
 
 	overlap = CountVentOverlaps(plot)
 

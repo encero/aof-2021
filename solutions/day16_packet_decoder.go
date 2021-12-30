@@ -14,16 +14,16 @@ const (
 )
 
 func Day16PacketDecoder() error {
-    packet := NewPacket(HexToBITS(helpers.ReadLine("inputs/day16.txt")))
+	packet := NewPacket(HexToBITS(helpers.ReadLine("inputs/day16.txt")))
 
-    version := SumPacketVersions(packet)
+	version := SumPacketVersions(packet)
 
-    fmt.Println("Day 16, Part 1", version)
+	fmt.Println("Day 16, Part 1", version)
 
-    result := packet.Compute()
+	result := packet.Compute()
 
-    fmt.Println("Day 16, Part 2", result)
-    
+	fmt.Println("Day 16, Part 2", result)
+
 	return nil
 }
 
@@ -50,60 +50,60 @@ func NewPacket(bits []bool) Packet {
 }
 
 func (p Packet) Compute() int {
-    subs := p.SubPackets()
+	subs := p.SubPackets()
 
-    switch p.Type {
-    case 0:
-        sum := 0
-        for _, v := range subs {
-            sum += v.Compute()
-        }
-        return sum
-    case 1:
-        product := 1
-        for _, p := range subs {
-            product *= p.Compute()
-        }
-        return product
-    case 2:
-        min := 2147483647
-        for _, p := range subs {
-            val := p.Compute()
-            if val < min {
-                min = val
-            }
-        }
-        return min
-    case 3:
-        max := 0
-        for _, p := range subs {
-            val := p.Compute()
-            if val > max {
-                max = val
-            }
-        }
-        return max
-    case 4:
-        val, _ := p.LiteralValue()
-        return val
-    case 5:
-        if subs[0].Compute() > subs[1].Compute() {
-            return 1
-        }
-        return 0
-    case 6:
-        if subs[0].Compute() < subs[1].Compute() {
-            return 1
-        }
-        return 0
-    case 7:
-        if subs[0].Compute() == subs[1].Compute() {
-            return 1
-        }
-        return 0
-    }
+	switch p.Type {
+	case 0:
+		sum := 0
+		for _, v := range subs {
+			sum += v.Compute()
+		}
+		return sum
+	case 1:
+		product := 1
+		for _, p := range subs {
+			product *= p.Compute()
+		}
+		return product
+	case 2:
+		min := 2147483647
+		for _, p := range subs {
+			val := p.Compute()
+			if val < min {
+				min = val
+			}
+		}
+		return min
+	case 3:
+		max := 0
+		for _, p := range subs {
+			val := p.Compute()
+			if val > max {
+				max = val
+			}
+		}
+		return max
+	case 4:
+		val, _ := p.LiteralValue()
+		return val
+	case 5:
+		if subs[0].Compute() > subs[1].Compute() {
+			return 1
+		}
+		return 0
+	case 6:
+		if subs[0].Compute() < subs[1].Compute() {
+			return 1
+		}
+		return 0
+	case 7:
+		if subs[0].Compute() == subs[1].Compute() {
+			return 1
+		}
+		return 0
+	}
 
-    panic("unknown packet")
+	panic("unknown packet")
 }
 
 func (p Packet) LiteralValue() (int, int) {
@@ -180,7 +180,7 @@ func (p Packet) Len() int {
 		return 3 + 3 + 1 + 15 + p.SubPacketDataLen()
 	}
 
-    size := 3 + 3 + 1 + 11
+	size := 3 + 3 + 1 + 11
 	for _, v := range p.SubPackets() {
 		size += v.Len()
 	}

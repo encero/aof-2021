@@ -7,39 +7,38 @@ import (
 )
 
 func Day17ProbeLauncher() error {
-    maxY, hits := OptimizeProbeHeight()
+	maxY, hits := OptimizeProbeHeight()
 
-    fmt.Println("Day 17, Part 1:", maxY)
-    fmt.Println("Day 17, Part 2:", hits)
+	fmt.Println("Day 17, Part 1:", maxY)
+	fmt.Println("Day 17, Part 2:", hits)
 
-
-    return nil
+	return nil
 }
 
 func OptimizeProbeHeight() (int, int) {
-    // 236..262, y=-78..-58
-    bounds := Bounds{236, 262, -58, -78}
+	// 236..262, y=-78..-58
+	bounds := Bounds{236, 262, -58, -78}
 
-    maxY := 0
-    hits := 0
+	maxY := 0
+	hits := 0
 
-    for x:= 0; x <= 262; x++ {
-        for y := -90; y <= 300; y++ {
-            probe := Probe{
-                Velocity: helpers.Vector{x, y},
-            }
+	for x := 0; x <= 262; x++ {
+		for y := -90; y <= 300; y++ {
+			probe := Probe{
+				Velocity: helpers.Vector{x, y},
+			}
 
-            hit := probe.HitTarget(bounds)
-            if hit && probe.MaxY > maxY {
-                maxY = probe.MaxY
-            }
-            if hit {
-                hits ++
-            }
-        }
-    }
+			hit := probe.HitTarget(bounds)
+			if hit && probe.MaxY > maxY {
+				maxY = probe.MaxY
+			}
+			if hit {
+				hits++
+			}
+		}
+	}
 
-    return maxY, hits
+	return maxY, hits
 }
 
 type Probe struct {
@@ -62,7 +61,7 @@ func (p *Probe) Move() {
 		p.MaxY = p.Position.Y
 	}
 
-    //fmt.Println(p.Position.X, p.Position.Y)
+	//fmt.Println(p.Position.X, p.Position.Y)
 }
 
 func (p *Probe) HitTarget(bounds Bounds) bool {
@@ -70,8 +69,8 @@ func (p *Probe) HitTarget(bounds Bounds) bool {
 		p.Move()
 	}
 
-    //fmt.Println("hit", bounds.Hit(p.Position))
-    //fmt.Println("over", bounds.Over(p.Position))
+	//fmt.Println("hit", bounds.Hit(p.Position))
+	//fmt.Println("over", bounds.Over(p.Position))
 
 	return bounds.Hit(p.Position)
 }

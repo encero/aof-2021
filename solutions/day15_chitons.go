@@ -14,10 +14,10 @@ func Day15Chitons() error {
 
 	fmt.Println("day 15, Part 1:", risk)
 
-    finder = NewChitonsPathFinder(ExpandChitonGrid(grid))
-    risk = finder.FindPath()
+	finder = NewChitonsPathFinder(ExpandChitonGrid(grid))
+	risk = finder.FindPath()
 
-    fmt.Println("day 15, Part 2:", risk)
+	fmt.Println("day 15, Part 2:", risk)
 	return nil
 }
 
@@ -99,24 +99,23 @@ func (ch *ChitonsPathFinder) cheapestOpen() helpers.Vector {
 }
 
 func ExpandChitonGrid(input [][]int) [][]int {
-    expanded := make([][]int, len(input)*5)
+	expanded := make([][]int, len(input)*5)
 
-    for x := 0; x < len(input) * 5; x++ {
-        expanded[x] = make([]int, len(input[0]) * 5)
-        for y := 0; y < len(input[0]) * 5; y ++ {
-            inputX := x % len(input)
-            inputY := y % len(input[0])
+	for x := 0; x < len(input)*5; x++ {
+		expanded[x] = make([]int, len(input[0])*5)
+		for y := 0; y < len(input[0])*5; y++ {
+			inputX := x % len(input)
+			inputY := y % len(input[0])
 
+			coef := helpers.Vector{X: x / len(input), Y: y / len(input[0])}.ManhattanDistance(helpers.ZeroVector)
 
-            coef := helpers.Vector{X:x/len(input), Y: y/len(input[0])}.ManhattanDistance(helpers.ZeroVector)
+			//fmt.Println(x,y, "->", inputX, inputY, "c", coef)
+			expanded[x][y] = input[inputX][inputY] + coef
+			if expanded[x][y] > 9 {
+				expanded[x][y] -= 9
+			}
+		}
+	}
 
-            //fmt.Println(x,y, "->", inputX, inputY, "c", coef)
-            expanded[x][y] = input[inputX][inputY] + coef
-            if expanded[x][y] > 9 {
-                expanded[x][y] -= 9
-            }
-        }
-    }
-
-    return expanded
+	return expanded
 }

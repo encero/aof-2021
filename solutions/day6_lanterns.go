@@ -6,7 +6,6 @@ import (
 	"strings"
 )
 
-
 func Day6Lanterns() error {
 	initial := helpers.StringsToInts(strings.Split(helpers.ReadLine("inputs/day6.txt"), ","))
 

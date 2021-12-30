@@ -46,7 +46,7 @@ func TestPolymerize2(t *testing.T) {
 	is := is_.New(t)
 
 	polymer := PolymerToPairs("NNCB")
-    
+
 	polymer = Polymerize2(polymer, polymerPairs)
 	is.Equal(polymer, PolymerToPairs("NCNBCHB"))
 
@@ -59,13 +59,12 @@ func TestPolymerize2(t *testing.T) {
 	polymer = Polymerize2(polymer, polymerPairs)
 	is.Equal(polymer, PolymerToPairs("NBBNBNBBCCNBCNCCNBBNBBNBBBNBBNBBCBHCBHHNHCBBCBHCB"))
 
-
 	polymer = PolymerToPairs("NNCB")
 
 	for i := 0; i < 40; i++ {
 		polymer = Polymerize2(polymer, polymerPairs)
 	}
-    diff := PolymerMinMax(polymer)
-    is.Equal(diff, int64(2188189693529))
+	diff := PolymerMinMax(polymer)
+	is.Equal(diff, int64(2188189693529))
 
 }

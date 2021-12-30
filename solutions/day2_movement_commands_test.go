@@ -3,8 +3,7 @@ package solutions
 import "testing"
 import is_ "github.com/matryer/is"
 
-
-func TestSimulateMovement(t *testing.T ) {
+func TestSimulateMovement(t *testing.T) {
 	is := is_.New(t)
 
 	depth, x := SimulateMovement([]MovementCommand{
@@ -55,7 +54,7 @@ func TestSimulateAimMovement(t *testing.T) {
 func TestParseDirection(t *testing.T) {
 	is := is_.New(t)
 
-	is.Equal(parseDirection("up"), Up) // Up
-	is.Equal(parseDirection("down"), Down) // Down
+	is.Equal(parseDirection("up"), Up)           // Up
+	is.Equal(parseDirection("down"), Down)       // Down
 	is.Equal(parseDirection("forward"), Forward) // Forward
 }

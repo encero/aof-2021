@@ -6,7 +6,6 @@ import (
 	"strings"
 )
 
-
 func Day13ThermalDrm() error {
 	var dots []helpers.Vector
 

@@ -40,14 +40,14 @@ func TestBounds(t *testing.T) {
 
 func TestHitTarget(t *testing.T) {
 	is := is_.New(t)
-    bounds := Bounds{20, 30, -5, -10}
+	bounds := Bounds{20, 30, -5, -10}
 
 	probe := &Probe{
 		Velocity: helpers.Vector{X: 6, Y: 9},
 	}
 
-    wasHit := probe.HitTarget(bounds)
+	wasHit := probe.HitTarget(bounds)
 
 	is.Equal(probe.MaxY, 45) // maxY
-    is.Equal(wasHit, true) // was hit
+	is.Equal(wasHit, true)   // was hit
 }

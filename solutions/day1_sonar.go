@@ -58,5 +58,3 @@ func SlidingNumberOfIncreasesInIntSlice(input []int) int {
 
 	return increased
 }
-
-

@@ -14,11 +14,8 @@ func TestSliceDistance(t *testing.T) {
 		return i
 	}
 
-
-
 	is.Equal(SliceDistance(2, input, simpleSum), 37)
 	is.Equal(SliceDistance(1, input, simpleSum), 41)
-
 
 	is.Equal(SliceDistance(5, input, CrabDistance), 168)
 	is.Equal(SliceDistance(2, input, CrabDistance), 206)
