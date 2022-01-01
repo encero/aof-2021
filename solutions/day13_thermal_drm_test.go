@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-var testPaperDots = []helpers.Vector{
+var testPaperDots = []helpers.Vec2{
 	{6, 10},
 	{0, 14},
 	{9, 10},

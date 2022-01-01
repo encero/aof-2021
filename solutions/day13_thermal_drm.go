@@ -7,13 +7,11 @@ import (
 )
 
 func Day13ThermalDrm() error {
-	var dots []helpers.Vector
-
+	var dots []helpers.Vec2
 	err := helpers.ReadLines("inputs/day13_dots.txt", func(line string) error {
 		coords := helpers.StringsToInts(strings.Split(line, ","))
 
-		dots = append(dots, helpers.Vector{X: coords[0], Y: coords[1]})
-
+		dots = append(dots, helpers.Vec2{X: coords[0], Y: coords[1]})
 		return nil
 	})
 	if err != nil {
@@ -63,12 +61,11 @@ const (
 )
 
 type Paper struct {
-	dots map[helpers.Vector]struct{}
+	dots map[helpers.Vec2]struct{}
 }
 
-func NewPaper(dots []helpers.Vector) Paper {
-	dotMap := make(map[helpers.Vector]struct{}, len(dots))
-
+func NewPaper(dots []helpers.Vec2) Paper {
+	dotMap := make(map[helpers.Vec2]struct{}, len(dots))
 	for _, dot := range dots {
 		dotMap[dot] = struct{}{}
 	}
@@ -79,28 +76,28 @@ func NewPaper(dots []helpers.Vector) Paper {
 }
 
 func (p Paper) Fold(dir FoldDirection, pos int) Paper {
-	foldXFunc := func(dot helpers.Vector) (*helpers.Vector, bool) {
+	foldXFunc := func(dot helpers.Vec2) (*helpers.Vec2, bool) {
 		if dot.X > pos {
-			return &helpers.Vector{X: pos - (dot.X - pos), Y: dot.Y}, false
+			return &helpers.Vec2{X: pos - (dot.X - pos), Y: dot.Y}, false
 		}
 
 		if dot.X == pos {
 			return nil, false
 		}
 
-		return &helpers.Vector{X: dot.X, Y: dot.Y}, true
+		return &helpers.Vec2{X: dot.X, Y: dot.Y}, true
 	}
 
-	foldYFunc := func(dot helpers.Vector) (*helpers.Vector, bool) {
+	foldYFunc := func(dot helpers.Vec2) (*helpers.Vec2, bool) {
 		if dot.Y > pos {
-			return &helpers.Vector{X: dot.X, Y: pos - (dot.Y - pos)}, false
+			return &helpers.Vec2{X: dot.X, Y: pos - (dot.Y - pos)}, false
 		}
 
 		if dot.Y == pos {
 			return nil, false
 		}
 
-		return &helpers.Vector{X: dot.X, Y: dot.Y}, true
+		return &helpers.Vec2{X: dot.X, Y: dot.Y}, true
 	}
 
 	foldF := foldXFunc
@@ -108,8 +105,7 @@ func (p Paper) Fold(dir FoldDirection, pos int) Paper {
 		foldF = foldYFunc
 	}
 
-	var dotMap = make(map[helpers.Vector]struct{}, len(p.dots))
-
+	var dotMap = make(map[helpers.Vec2]struct{}, len(p.dots))
 	for k := range p.dots {
 		folded, _ := foldF(k)
 
@@ -143,7 +139,7 @@ func (p Paper) Dump() {
 	for y := 0; y <= maxY; y++ {
 		fmt.Printf("%2d ", y)
 		for x := 0; x <= maxX; x++ {
-			if _, ok := p.dots[helpers.Vector{X: x, Y: y}]; ok {
+			if _, ok := p.dots[helpers.Vec2{X: x, Y: y}]; ok {
 				fmt.Print("#")
 			} else {
 				fmt.Print(".")

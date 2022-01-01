@@ -22,4 +22,6 @@ func init() {
 	Solutions[17] = Day17ProbeLauncher
 	Solutions[18] = Day18SnailNumbers
 	Solutions[19] = Day19Beacons
+	Solutions[20] = Day20TrenchMap
+	Solutions[21] = Day21DiceGame
 }

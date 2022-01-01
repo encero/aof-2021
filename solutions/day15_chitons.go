@@ -30,19 +30,19 @@ func ChitonPath(grid [][]int) int {
 
 type ChitonsPathFinder struct {
 	chitons [][]int
-	open    map[helpers.Vector]struct{}
-	gScore  map[helpers.Vector]int
-	end     helpers.Vector
+	open    map[helpers.Vec2]struct{}
+	gScore  map[helpers.Vec2]int
+	end     helpers.Vec2
 }
 
 func NewChitonsPathFinder(chitons [][]int) *ChitonsPathFinder {
-	start := helpers.Vector{X: 0, Y: 0}
-	open := make(map[helpers.Vector]struct{})
+	start := helpers.Vec2{X: 0, Y: 0}
+	open := make(map[helpers.Vec2]struct{})
 	open[start] = struct{}{}
 
-	end := helpers.Vector{X: len(chitons) - 1, Y: len(chitons[0]) - 1}
+	end := helpers.Vec2{X: len(chitons) - 1, Y: len(chitons[0]) - 1}
 
-	gScore := make(map[helpers.Vector]int)
+	gScore := make(map[helpers.Vec2]int)
 	gScore[start] = 0
 
 	return &ChitonsPathFinder{
@@ -84,9 +84,9 @@ func (ch *ChitonsPathFinder) FindPath() int {
 	panic("no solution")
 }
 
-func (ch *ChitonsPathFinder) cheapestOpen() helpers.Vector {
+func (ch *ChitonsPathFinder) cheapestOpen() helpers.Vec2 {
 	cost := 12345678
-	var cheapest helpers.Vector
+	var cheapest helpers.Vec2
 
 	for v := range ch.open {
 		if newCost := v.ManhattanDistance(ch.end) + ch.gScore[v]; newCost < cost {
@@ -107,8 +107,7 @@ func ExpandChitonGrid(input [][]int) [][]int {
 			inputX := x % len(input)
 			inputY := y % len(input[0])
 
-			coef := helpers.Vector{X: x / len(input), Y: y / len(input[0])}.ManhattanDistance(helpers.ZeroVector)
-
+			coef := helpers.Vec2{X: x / len(input), Y: y / len(input[0])}.ManhattanDistance(helpers.ZeroVector)
 			//fmt.Println(x,y, "->", inputX, inputY, "c", coef)
 			expanded[x][y] = input[inputX][inputY] + coef
 			if expanded[x][y] > 9 {

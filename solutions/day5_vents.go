@@ -36,7 +36,7 @@ func (c VentCoordinate) Cardinal() bool {
 	return c.X1 == c.X2 || c.Y1 == c.Y2
 }
 
-func (c VentCoordinate) Direction() helpers.Vector {
+func (c VentCoordinate) Direction() helpers.Vec2 {
 	if c.X1 == c.X2 {
 		if c.Y1 < c.Y2 {
 			return helpers.DownVector
@@ -98,8 +98,8 @@ func PlotVents(vents []VentCoordinate) [][]int {
 	}
 
 	for _, vent := range vents {
-		start := helpers.Vector{X: vent.X1, Y: vent.Y1}
-		end := helpers.Vector{X: vent.X2, Y: vent.Y2}
+		start := helpers.Vec2{X: vent.X1, Y: vent.Y1}
+		end := helpers.Vec2{X: vent.X2, Y: vent.Y2}
 		direction := vent.Direction()
 
 		for !start.Equal(end) {

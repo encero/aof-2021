@@ -25,7 +25,7 @@ func OptimizeProbeHeight() (int, int) {
 	for x := 0; x <= 262; x++ {
 		for y := -90; y <= 300; y++ {
 			probe := Probe{
-				Velocity: helpers.Vector{x, y},
+				Velocity: helpers.Vec2{x, y},
 			}
 
 			hit := probe.HitTarget(bounds)
@@ -42,8 +42,8 @@ func OptimizeProbeHeight() (int, int) {
 }
 
 type Probe struct {
-	Velocity helpers.Vector
-	Position helpers.Vector
+	Velocity helpers.Vec2
+	Position helpers.Vec2
 	MaxY     int
 }
 
@@ -80,10 +80,14 @@ type Bounds struct {
 	Y0, Y1 int
 }
 
-func (b *Bounds) Hit(v helpers.Vector) bool {
+func (b *Bounds) Hit(v helpers.Vec2) bool {
 	return v.X >= b.X0 && v.X <= b.X1 && v.Y <= b.Y0 && v.Y >= b.Y1
 }
 
-func (b *Bounds) Over(v helpers.Vector) bool {
+func (b *Bounds) TrueHit(v helpers.Vec2) bool {
+	return v.X >= b.X0 && v.X <= b.X1 && v.Y >= b.Y0 && v.Y <= b.Y1
+}
+
+func (b *Bounds) Over(v helpers.Vec2) bool {
 	return v.X >= b.X1 || v.Y <= b.Y1
 }

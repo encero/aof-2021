@@ -11,16 +11,16 @@ func TestProbeMove(t *testing.T) {
 	is := is_.New(t)
 
 	probe := Probe{
-		Velocity: helpers.Vector{X: 1, Y: 1},
+		Velocity: helpers.Vec2{X: 1, Y: 1},
 	}
 
 	probe.Move()
-	is.Equal(probe.Position, helpers.Vector{X: 1, Y: 1})
-	is.Equal(probe.Velocity, helpers.Vector{X: 0, Y: 0})
+	is.Equal(probe.Position, helpers.Vec2{X: 1, Y: 1})
+	is.Equal(probe.Velocity, helpers.Vec2{X: 0, Y: 0})
 
 	probe.Move()
-	is.Equal(probe.Position, helpers.Vector{X: 1, Y: 1})
-	is.Equal(probe.Velocity, helpers.Vector{X: 0, Y: -1})
+	is.Equal(probe.Position, helpers.Vec2{X: 1, Y: 1})
+	is.Equal(probe.Velocity, helpers.Vec2{X: 0, Y: -1})
 }
 
 func TestBounds(t *testing.T) {
@@ -31,11 +31,11 @@ func TestBounds(t *testing.T) {
 		-30, -40,
 	}
 
-	is.Equal(b.Hit(helpers.Vector{0, 0}), false)   // Hit out
-	is.Equal(b.Hit(helpers.Vector{10, -30}), true) // Hit in
+	is.Equal(b.Hit(helpers.Vec2{0, 0}), false)   // Hit out
+	is.Equal(b.Hit(helpers.Vec2{10, -30}), true) // Hit in
 
-	is.Equal(b.Over(helpers.Vector{30, -50}), true) // Over
-	is.Equal(b.Over(helpers.Vector{0, 0}), false)   // Not Over
+	is.Equal(b.Over(helpers.Vec2{30, -50}), true) // Over
+	is.Equal(b.Over(helpers.Vec2{0, 0}), false)   // Not Over
 }
 
 func TestHitTarget(t *testing.T) {
@@ -43,7 +43,7 @@ func TestHitTarget(t *testing.T) {
 	bounds := Bounds{20, 30, -5, -10}
 
 	probe := &Probe{
-		Velocity: helpers.Vector{X: 6, Y: 9},
+		Velocity: helpers.Vec2{X: 6, Y: 9},
 	}
 
 	wasHit := probe.HitTarget(bounds)

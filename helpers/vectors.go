@@ -1,37 +1,38 @@
 package helpers
 
-type Vector struct {
+type Vec2 struct {
 	X, Y int
 }
 
-func (v Vector) Add(v2 Vector) Vector {
-	return Vector{v.X + v2.X, v.Y + v2.Y}
+func (v Vec2) Add(v2 Vec2) Vec2 {
+	return Vec2{v.X + v2.X, v.Y + v2.Y}
 }
 
-func (v Vector) Equal(end Vector) bool {
+func (v Vec2) Equal(end Vec2) bool {
 	return v.X == end.X && v.Y == end.Y
 }
 
-func (v Vector) ManhattanDistance(end Vector) int {
+func (v Vec2) ManhattanDistance(end Vec2) int {
 	return AbsInt(v.X-end.X) + AbsInt(v.Y-end.Y)
 }
 
 var (
-	UpVector    = Vector{0, -1}
-	DownVector  = Vector{0, 1}
-	LeftVector  = Vector{-1, 0}
-	RightVector = Vector{1, 0}
+	UpVector    = Vec2{0, -1}
+	DownVector  = Vec2{0, 1}
+	LeftVector  = Vec2{-1, 0}
+	RightVector = Vec2{1, 0}
 
-	DownRightVector = Vector{1, 1}
-	DownLeftVector  = Vector{-1, 1}
+	DownRightVector = Vec2{1, 1}
+	DownLeftVector  = Vec2{-1, 1}
 
-	UpRightVector = Vector{1, -1}
-	UpLeftVector  = Vector{-1, -1}
+	UpRightVector = Vec2{1, -1}
+	UpLeftVector  = Vec2{-1, -1}
 
-	ZeroVector = Vector{0, 0}
+	ZeroVector = Vec2{0, 0}
 
-	EightDirections = []Vector{UpVector, DownVector, LeftVector, RightVector, DownRightVector, DownLeftVector, UpRightVector, UpLeftVector}
-	FourDirections  = []Vector{UpVector, DownVector, LeftVector, RightVector}
+	NineDirections = []Vec2{UpLeftVector, UpVector, UpRightVector, LeftVector, ZeroVector, RightVector, DownLeftVector, DownVector, DownRightVector}
+	EightDirections = []Vec2{UpVector, DownVector, LeftVector, RightVector, DownRightVector, DownLeftVector, UpRightVector, UpLeftVector}
+	FourDirections  = []Vec2{UpVector, DownVector, LeftVector, RightVector}
 )
 
 var (
